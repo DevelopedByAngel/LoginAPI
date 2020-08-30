@@ -32,7 +32,7 @@ app.post('/register',(req,res) =>
 		data.push({
 			email:email,
 			name:name,
-			password:hash
+			password:password
 		})
 	}
 	res.json(data[data.length-1]);
@@ -50,8 +50,7 @@ app.post('/login',(req,res)=>
     {
       var compare
       data.map(d=>{
-      compare=bcrypt.compareSync(password,d.password)
-      if(compare && d.email===email )
+      if(d.password===password && d.email===email )
         login=true;
     });
     }
