@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DevelopedByAngel/chatapi.git"
+    "url": "git+https://github.com/DevelopedByAngel/LoginAPI.git"
   },
   "keywords": [
     "chat"
@@ -17,9 +17,9 @@
   "author": "angel",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DevelopedByAngel/chatapi/issues"
+    "url": "https://github.com/DevelopedByAngel/LoginAPI/issues"
   },
-  "homepage": "https://github.com/DevelopedByAngel/chatapi#readme",
+  "homepage": "https://github.com/DevelopedByAngel/LoginAPI#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
