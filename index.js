@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const bodyParser = require('body-parser')
 const cors=require('cors');
+const bcrypt=require('bcrypt-nodejs');
 var data=
 [{
 email:'angel',
@@ -17,30 +18,24 @@ app.get('/',(req,res) =>
 app.post('/register',(req,res) =>
 	{
 		console.log('ok')
-    const j=true;
 		const {email,name,password} = req.body;
 		if (!name || !email || !password)
 		{
-      j=false;
 			res.status(400).json('wrong credentials')
 		}
 		else{
 			data.map(d=>{
 				if(d.email === email)
 					res.json("exists");
-          j=false;
 			});
-    console.log('in')
+		const hash=bcrypt.hashSync(password);//getting hashed password
 		data.push({
 			email:email,
 			name:name,
-			password:password
+			password:hash
 		})
 	}
-  if (j)
-	res.json('ok');
-else
-  res.json('not')
+	res.json(data[data.length-1]);
 	});
 app.post('/login',(req,res)=>
   {
@@ -55,7 +50,8 @@ app.post('/login',(req,res)=>
     {
       var compare
       data.map(d=>{
-      if(password===d.password && d.email===email )
+      compare=bcrypt.compareSync(password,d.password)
+      if(compare && d.email===email )
         login=true;
     });
     }
