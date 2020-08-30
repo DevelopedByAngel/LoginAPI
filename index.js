@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require('body-parser')
 const cors=require('cors');
 const bcrypt=require('bcrypt-nodejs');
-var data=
-[];
+var data=[];
+console.log('ok')
 app.use(bodyParser.json());
 app.use(cors());
 app.get('/',(req,res) =>
@@ -63,4 +63,4 @@ app.post('/login',(req,res)=>
     }
   });
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
