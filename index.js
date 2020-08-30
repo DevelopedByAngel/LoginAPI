@@ -3,8 +3,12 @@ const app = express();
 const bodyParser = require('body-parser')
 const cors=require('cors');
 const bcrypt=require('bcrypt-nodejs');
-var data=[];
-console.log('ok')
+var data=
+[{
+email:'angel',
+name:'angel',
+password:'ok'
+}];
 app.use(bodyParser.json());
 app.use(cors());
 app.get('/',(req,res) =>
@@ -24,6 +28,7 @@ app.post('/register',(req,res) =>
 				if(d.email === email)
 					res.json("exists");
 			});
+      console.log('in')
 		const hash=bcrypt.hashSync(password);//getting hashed password
 		data.push({
 			email:email,
@@ -63,4 +68,4 @@ app.post('/login',(req,res)=>
     }
   });
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT)
